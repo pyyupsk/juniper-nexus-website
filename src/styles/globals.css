@@ -50,6 +50,7 @@
     }
 }
 
+/* Base styles */
 @layer base {
     * {
         @apply border-border;
@@ -88,7 +89,7 @@
     }
 
     h2 {
-        @apply border-b pb-2 text-3xl first:mt-0;
+        @apply pb-2 text-3xl first:mt-0;
     }
 
     h3 {

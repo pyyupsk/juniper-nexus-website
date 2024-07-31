@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import { ArrowDown, Sparkles, UsersRound } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { MembersAchievements } from './components/members-achievements';
 
 export default function Page() {
     return (
@@ -24,7 +25,6 @@ export default function Page() {
                     <div className="absolute inset-0 bg-black/80" />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent" />
                 </div>
-
                 <div className="z-10 container text-center">
                     <h1>ยินดีต้อนรับสู่ Juniper Nexus</h1>
                     <p className="text-xl">เข้าร่วมชุมชนที่มีชีวิตชีวาของเราและปรับปรุงประสบการณ์ Garena RoV ของคุณ!</p>
@@ -36,7 +36,6 @@ export default function Page() {
                         เข้าร่วมกิลด์ของเราบนดิสคอร์ด
                     </Link>
                 </div>
-
                 <div className="absolute bottom-0 left-0 right-0 p-8 flex justify-center">
                     <ArrowDown className="animate-bounce size-8" />
                 </div>
@@ -129,6 +128,7 @@ export default function Page() {
                     </div>
                 </div>
             </section>
+            <MembersAchievements limit={3} />
             <section className="py-16 container">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div>

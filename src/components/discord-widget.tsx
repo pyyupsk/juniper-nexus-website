@@ -74,20 +74,20 @@ export async function DiscordWidget() {
                 <p className="muted">สมาชิกที่ออนไลน์</p>
                 <div className="h-[calc(100%-1rem)] overflow-y-auto">
                     <ul className="space-y-1 list-none">
-                        {data.members.map((member) => (
-                            <li key={member.id} className="flex items-center space-x-2">
+                        {data.members.map(({ id, username, avatar_url, status, game }) => (
+                            <li key={id} className="flex items-center space-x-2">
                                 <Image
-                                    src={member.avatar_url}
-                                    alt={member.username}
+                                    src={avatar_url}
+                                    alt={username}
                                     width={24}
                                     height={24}
                                     className={cn(
                                         'rounded-full border-2',
-                                        statusColor(member.status),
-                                        member.game && 'animate-pulse',
+                                        statusColor(status),
+                                        game && 'animate-pulse',
                                     )}
                                 />
-                                <span className="muted text-sm">{member.username}</span>
+                                <span className="muted text-sm">{username}</span>
                             </li>
                         ))}
                     </ul>

@@ -22,7 +22,7 @@ export function Desktop({ user, pathname, scrolled }: Props) {
                 <Link href="/support" className={buttonVariants({ variant: 'ghost' })}>
                     สนับสนุน
                 </Link>
-                <Link href="/members-area" className={buttonVariants()}>
+                <Link href={user ? '/members-area' : '/sign-in'} className={buttonVariants()}>
                     {user ? 'พื้นที่สมาชิก' : 'เข้าสู่ระบบ'}
                 </Link>
             </div>

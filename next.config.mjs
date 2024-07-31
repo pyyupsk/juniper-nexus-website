@@ -9,6 +9,11 @@ const nextConfig = {
                 hostname: 'cdn.discordapp.com',
                 pathname: '/widget-avatars/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'qpmtvzspevuvztptbwwr.supabase.co',
+                pathname: '/storage/v1/object/public/game%20profiles/**',
+            },
         ],
     },
 };

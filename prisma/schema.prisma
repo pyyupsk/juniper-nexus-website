@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Achievements {
+  image       String
+  title       String
+  member      String
+  description String
+  created_at  DateTime? @default(now()) @db.Timestamptz(6)
+  id          String    @id @unique(map: "unique_new_id") @default("substr(md5(random()::text), 1, 5)") @db.Char(5)
+}
+
+model Coin {
+  id         Int      @id @unique @default(autoincrement())
+  amount     Int
+  timestamp  DateTime @default(now())
+  reason     String?
+  event_name String?
+  operator   String
+  user_id    String
+  Event      Event?   @relation(fields: [event_name], references: [event_name], onDelete: Cascade, onUpdate: NoAction, map: "Coin_event_name_Event_event_name_fk")
+  User       User     @relation(fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: NoAction, map: "Coin_user_id_User_user_id_fk")
+}
+
+model Event {
+  id         Int      @id @unique @default(autoincrement())
+  timestamp  DateTime @default(now())
+  event_name String   @unique
+  Coin       Coin[]
+}
+
+model User {
+  id       Int    @id @unique @default(autoincrement())
+  user_id  String @unique
+  username String
+  Coin     Coin[]
+}
+
+model VoiceLevel {
+  user_id    String
+  guild_id   String
+  xp         String
+  level      String
+  time_spent String
+  id         Int    @id @unique @default(autoincrement())
+}

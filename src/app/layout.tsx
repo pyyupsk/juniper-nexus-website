@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
+import { ClerkProvider } from '@/components/clerk-provider';
 import { ThemeProvider } from '@/components/theme-provider';
 import { commonMetaData } from '@/lib/meta';
-import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import { Prompt as FontSans } from 'next/font/google';
 import { ReactNode } from 'react';
