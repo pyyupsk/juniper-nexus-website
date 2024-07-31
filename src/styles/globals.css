@@ -147,6 +147,10 @@
     .link {
         @apply text-primary underline-offset-4 hover:underline;
     }
+
+    .quote {
+        @apply before:ml-0.5 before:text-primary before:content-['\201C'] after:ml-0.5 after:text-primary after:content-['\201C'];
+    }
 }
 
 /* Form styles */
