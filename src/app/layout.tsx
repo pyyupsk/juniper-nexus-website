@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
+import { ThemeProvider } from '@/components/theme-provider';
 import { commonMetaData } from '@/lib/meta';
-import { cn } from '@/lib/utils';
+import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import { Prompt as FontSans } from 'next/font/google';
 import { ReactNode } from 'react';
@@ -24,16 +25,16 @@ export async function generateMetadata(): Promise<Metadata> {
     return metaData;
 }
 
-export default function RootLayout({
-    children,
-}: Readonly<{
-    children: ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
-            <body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
-                {children}
-            </body>
-        </html>
+        <ClerkProvider>
+            <html lang="th" className="dark" suppressHydrationWarning>
+                <body className={fontSans.variable}>
+                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                        {children}
+                    </ThemeProvider>
+                </body>
+            </html>
+        </ClerkProvider>
     );
 }

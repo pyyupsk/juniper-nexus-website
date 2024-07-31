@@ -17,6 +17,10 @@ export const links: Url[] = [
         href: '/members-achievements',
     },
     {
+        name: 'เข้าร่วมชุมชน',
+        href: '/community',
+    },
+    {
         name: 'ติดต่อเรา',
         href: '/contact-us',
     },

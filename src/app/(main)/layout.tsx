@@ -1,5 +1,13 @@
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
+import { Footer } from './components/footer';
+import { Header } from './components/header';
 
-const MainLayout = ({ children }: { children: ReactNode }) => <>{children}</>;
-
-export default MainLayout;
+export default function Layout({ children }: { children: ReactNode }) {
+    return (
+        <Fragment>
+            <Header />
+            {children}
+            <Footer />
+        </Fragment>
+    );
+}
