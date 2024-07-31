@@ -1,6 +1,9 @@
+import { randomInt } from 'crypto';
 import { CopyButton } from '@/components/copy-button';
 import { buttonVariants } from '@/components/ui/button';
+import { env } from '@/env';
 import { prisma } from '@/lib/prisms';
+import { Achievements } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -9,10 +12,26 @@ type Props = {
 };
 
 export async function MembersAchievements({ limit = undefined }: Props) {
-    const achievements = await prisma.achievements.findMany({
-        orderBy: { id: 'asc' },
-        take: limit ? limit : undefined,
-    });
+    const achievements: Omit<Achievements, 'created_at'>[] = [];
+
+    if (env.NODE_ENV === 'production') {
+        const result = await prisma.achievements.findMany({
+            orderBy: { id: 'asc' },
+            take: limit ? limit : undefined,
+        });
+
+        achievements.push(...result);
+    }
+
+    for (let i = 0; i < (limit ? limit : randomInt(5, 20)); i++) {
+        achievements.push({
+            id: `test-${i}`,
+            title: 'title',
+            description: 'description',
+            image: 'https://placeholder.com/500x500',
+            member: `member-${i}`,
+        });
+    }
 
     return (
         <section className="py-16 container">

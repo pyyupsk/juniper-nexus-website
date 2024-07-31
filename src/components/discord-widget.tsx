@@ -1,7 +1,10 @@
-import { GUILD_ID } from '@/constants';
+'use client';
+
+import { env } from '@/env';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { IcOutlineDiscord } from './icons/IcOutlineDiscord';
 import { buttonVariants } from './ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
@@ -44,9 +47,15 @@ export enum Status {
     Online = 'online',
 }
 
-export async function DiscordWidget() {
-    const response = await fetch(`https://discordapp.com/api/guilds/${GUILD_ID}/widget.json`);
-    const data: Widget = await response.json();
+export function DiscordWidget({ className }: { className?: string }) {
+    const [data, setData] = useState<Widget>({
+        id: '',
+        name: '',
+        instant_invite: '',
+        channels: [],
+        members: [],
+        presence_count: 0,
+    });
 
     function statusColor(status: Status) {
         switch (status) {
@@ -59,8 +68,14 @@ export async function DiscordWidget() {
         }
     }
 
+    useEffect(() => {
+        fetch(`https://discordapp.com/api/guilds/${env.NEXT_PUBLIC_DISCORD_GUILD_ID}/widget.json`)
+            .then((response) => response.json())
+            .then((data) => setData(data));
+    }, []);
+
     return (
-        <Card>
+        <Card className={className}>
             <CardHeader className="bg-primary text-primary-foreground rounded-t-lg">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">

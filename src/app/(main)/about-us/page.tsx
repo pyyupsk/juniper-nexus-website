@@ -67,12 +67,17 @@ export default function Page() {
                     </div>
                     <div className="bg-card border p-6 transform rotate-1 hover:rotate-0 transition-transform duration-300">
                         <div className="flex flex-col justify-center items-center h-full">
-                            <Image
-                                src={LeaderboardImage}
-                                alt="Leaderboard Screenshot"
-                                sizes="(100vw, 100vh)"
-                                className="w-full h-auto mb-4 border-4 border-primary"
-                            />
+                            <div className="relative border-4 border-primary w-full h-full">
+                                <div className="absolute inset-0">
+                                    <Image
+                                        src={LeaderboardImage}
+                                        alt="Leaderboard Screenshot"
+                                        sizes="(100vw, 100vh)"
+                                        className="object-cover w-full h-full opacity-80"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-primary opacity-20 rounded-lg" />
+                                </div>
+                            </div>
                             <p className="italic muted quote text-sm">
                                 Juniper Nexus ได้รับการจัดอันดับให้เป็นหนึ่งในกิลด์ชั้นนำของประเทศไทยอย่างภาคภูมิใจ
                             </p>

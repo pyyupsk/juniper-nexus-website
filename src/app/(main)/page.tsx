@@ -1,15 +1,12 @@
-import HeroImage from '@/assets/images/meetings/1.jpg';
-import AboutImage from '@/assets/images/meetings/5.jpg';
+import AboutImage from '@/assets/images/meetings/1.jpg';
 import { DiscordWidget } from '@/components/discord-widget';
 import { buttonVariants } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { contacts, discord } from '@/data/contacts';
-import { activities } from '@/data/guild/activities';
-import { cn } from '@/lib/utils';
 import { ArrowDown, Sparkles, UsersRound } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MembersAchievements } from './components/members-achievements';
+import { Activities } from './components/sections/activities';
 import { GetInvolved } from './components/sections/get-involved';
 
 export default function Page() {
@@ -18,15 +15,15 @@ export default function Page() {
             <section className="relative h-screen flex items-center justify-center">
                 <div className="absolute inset-0">
                     <Image
-                        src={HeroImage}
+                        src="https://lienquan.garena.vn/wp-content/uploads/2024/05/0c026845cdd6414fbd6c1bcb9fc70628660396d3c7f931.jpg"
                         alt="Garena RoV background"
-                        sizes="(100vw, 100vh)"
-                        className="object-cover w-full h-full"
+                        width={1920}
+                        height={1080}
+                        className="object-cover w-full h-full opacity-20"
                     />
-                    <div className="absolute inset-0 bg-black/80" />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent" />
                 </div>
-                <div className="z-10 container text-center">
+                <div className="container text-center relative">
                     <h1>ยินดีต้อนรับสู่ Juniper Nexus</h1>
                     <p className="text-xl">เข้าร่วมชุมชนที่มีชีวิตชีวาของเราและปรับปรุงประสบการณ์ Garena RoV ของคุณ!</p>
                     <Link
@@ -67,22 +64,10 @@ export default function Page() {
                             sizes="(100vw, 100vh)"
                             className="rounded-lg shadow-xl w-full h-full max-h-96 object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-primary opacity-20 rounded-lg"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-primary opacity-20 rounded-lg" />
                     </div>
                 </div>
-                <div className="mt-12 grid grid-cols-3 gap-8 text-center">
-                    {activities.map(({ name, icon, description }) => (
-                        <Card key={name}>
-                            <CardHeader>
-                                <icon.svg className={cn('size-12 mx-auto mb-4', icon.className)} />
-                                <CardTitle>{name}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="muted">{description}</p>
-                            </CardContent>
-                        </Card>
-                    ))}
-                </div>
+                <Activities />
             </section>
             <section className="py-16 container">
                 <h2 className="text-center">ความสำเร็จของกิลด์</h2>

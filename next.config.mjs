@@ -6,6 +6,10 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
+                hostname: 'placeholder.com',
+            },
+            {
+                protocol: 'https',
                 hostname: 'cdn.discordapp.com',
                 pathname: '/widget-avatars/**',
             },
@@ -13,6 +17,11 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'qpmtvzspevuvztptbwwr.supabase.co',
                 pathname: '/storage/v1/object/public/game%20profiles/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'lienquan.garena.vn',
+                pathname: '/wp-content/uploads/**',
             },
         ],
     },
