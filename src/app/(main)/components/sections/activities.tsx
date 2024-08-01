@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 export function Activities() {
     return (
-        <div className="mt-12 grid grid-cols-3 gap-8 text-center">
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8 text-center">
             {activities.map(({ name, icon, description }) => (
                 <Card key={name}>
                     <CardHeader>

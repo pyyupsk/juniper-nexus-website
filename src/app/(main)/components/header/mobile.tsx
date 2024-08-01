@@ -3,14 +3,12 @@ import { links } from '@/data/links';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
-import { Fragment, useCallback, useState } from 'react';
+import { Fragment, useCallback } from 'react';
 import { Props } from './index';
 import { RenderLink } from './render-link';
 
-export function Mobile({ user, pathname, scrolled }: Props) {
-    const [open, setOpen] = useState(false);
-
-    const toggleOpen = useCallback(() => setOpen((prev) => !prev), []);
+export function Mobile({ user, pathname, scrolled, open, setOpen }: Props) {
+    const toggleOpen = useCallback(() => setOpen!((prev) => !prev), [setOpen]);
 
     return (
         <Fragment>

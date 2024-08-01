@@ -70,7 +70,7 @@ export function FeedbackForm() {
                 />
                 <Fade via="transparent" to="background" />
             </div>
-            <div className="max-w-4xl mx-auto relative">
+            <div className="max-w-4xl container relative">
                 <h2 className="text-center">คำติชมและข้อเสนอแนะ</h2>
                 <p className="text-center leading">
                     เราให้ความสำคัญกับความคิดเห็นของคุณ! แบ่งปันความคิดและข้อเสนอแนะของคุณเพื่อช่วยให้เราปรับปรุงชุมชน

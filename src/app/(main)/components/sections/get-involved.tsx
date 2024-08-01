@@ -6,7 +6,7 @@ import Image from 'next/image';
 export function GetInvolved() {
     return (
         <section className="py-16 container">
-            <div className="relative rounded-lg shadow-sm p-16">
+            <div className="relative rounded-lg shadow-sm p-6 md:p-8 lg:p-16">
                 <Image
                     src="https://lienquan.garena.vn/wp-content/uploads/2024/07/15901.jpg"
                     alt="Garena RoV Background"
@@ -18,15 +18,18 @@ export function GetInvolved() {
                 <Aurora className="rounded-lg opacity-50" />
                 <Fade direction="r" via="background/50" to="transparent" className="rounded-md" />
                 <div className="relative flex items-center justify-between">
-                    <div className="flex-1">
+                    <div>
                         <h2>การมีส่วนร่วม</h2>
                         <p className="text-xl font-medium">
                             สนใจเข้าร่วมกิลด์ของเราหรือมีส่วนร่วมในโครงการของเราหรือไม่?
                             <br />
                             เชื่อมต่อกับเราผ่าน Discord และเป็นส่วนหนึ่งของชุมชนที่กำลังเติบโตของเรา
                         </p>
+                        <DiscordButton size="lg" icon className="mt-8 lg:hidden">
+                            เข้าร่วม Discord ของเรา
+                        </DiscordButton>
                     </div>
-                    <div>
+                    <div className="hidden lg:block">
                         <DiscordButton size="xl" icon>
                             เข้าร่วม Discord ของเรา
                         </DiscordButton>

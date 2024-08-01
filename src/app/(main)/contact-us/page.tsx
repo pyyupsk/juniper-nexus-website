@@ -17,7 +17,9 @@ export default function Page() {
         <main>
             <section className="py-16 container min-h-screen flex flex-col items-center justify-center">
                 <h2 className="text-primary border-b-4 border-primary">รับการติดต่อ</h2>
-                <p className="leading">หากต้องการความช่วยเหลือหรือสอบถามข้อมูลใดๆ โปรดติดต่อเราผ่านช่องทางต่อไปนี้</p>
+                <p className="leading text-center">
+                    หากต้องการความช่วยเหลือหรือสอบถามข้อมูลใดๆ โปรดติดต่อเราผ่านช่องทางต่อไปนี้
+                </p>
                 <ContactsCard />
             </section>
             <section className="py-16 container">

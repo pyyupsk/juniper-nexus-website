@@ -18,7 +18,7 @@ export function Desktop({ user, pathname, scrolled }: Props) {
                     <RenderLink key={link.href} link={link} pathname={pathname} scrolled={scrolled} />
                 ))}
             </nav>
-            <div className="flex min-w-[200px] justify-end">
+            <div className="min-w-[200px] justify-end hidden lg:flex">
                 <Link href={user ? '/members-area' : '/sign-in'} className={buttonVariants()}>
                     {user ? 'พื้นที่สมาชิก' : 'เข้าสู่ระบบ'}
                 </Link>

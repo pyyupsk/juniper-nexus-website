@@ -23,7 +23,7 @@ export default function Page() {
     return (
         <main className="mt-16">
             <section className="py-16 container">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <div>
                         <h2 className="text-primary border-b-4 border-primary inline-block transform -skew-x-6">
                             ยินดีต้อนรับสู่ Juniper Nexus
@@ -67,7 +67,7 @@ export default function Page() {
                 </div>
             </section>
             <section className="py-16 container">
-                <div className="rounded-lg border border-primary shadow-lg p-16 relative">
+                <div className="rounded-lg border border-primary shadow-lg p-6 md:p-8 lg:p-16 relative">
                     <div className="absolute inset-0">
                         <Image
                             src="https://lienquan.garena.vn/wp-content/uploads/2024/05/b12e3849968a910bd641d3213419f3986597b67bbeda61.jpg"
@@ -78,10 +78,10 @@ export default function Page() {
                         />
                         <Aurora className="rounded-lg" />
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative">
                         <div>
                             <h3>หลักเกณฑ์ของชุมชน</h3>
-                            <ul className="space-y-6">
+                            <ul className="space-y-4 lg:space-y-6 my-0 ml-0 pt-2 lg:my-6 lg:ml-6 lg:pt-0">
                                 {community.map((item, index) => (
                                     <li key={index} className="flex items-center gap-2">
                                         <CheckCircle className="size-5 text-primary" />
@@ -92,7 +92,7 @@ export default function Page() {
                         </div>
                         <div>
                             <h3>กฎกิลด์สำหรับสมาชิกกิลด์</h3>
-                            <ul className="space-y-6">
+                            <ul className="space-y-4 lg:space-y-6 my-0 ml-0 pt-2 lg:my-6 lg:ml-6 lg:pt-0">
                                 {member.map((item, index) => (
                                     <li key={index} className="flex items-center gap-2">
                                         <CheckCircle className="size-5 text-primary" />

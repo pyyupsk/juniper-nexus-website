@@ -55,12 +55,12 @@ export default function Page() {
                             </Link>
                         </div>
                     </div>
-                    <div className="relative h-64 lg:h-auto">
+                    <div className="relative aspect-video">
                         <Image
                             src={AboutImage}
                             alt="Juniper Nexus Guild Activities"
                             sizes="(100vw, 100vh)"
-                            className="rounded-lg shadow-xl w-full h-full max-h-96 object-cover"
+                            className="rounded-lg shadow-xl aspect-video object-cover"
                         />
                         <Aurora className="rounded-lg" />
                     </div>
@@ -108,7 +108,7 @@ export default function Page() {
             </section>
             <MembersAchievements limit={6} />
             <section className="py-16 container">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <h2>เข้าร่วมชุมชน Discord ของเรา</h2>
                         <p className="leading">

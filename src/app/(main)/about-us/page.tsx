@@ -65,7 +65,7 @@ export default function Page() {
                         </div>
                     </div>
                     <div className="bg-card border p-6 transform rotate-1 hover:rotate-0 transition-transform duration-300">
-                        <div className="flex flex-col justify-center items-center h-full">
+                        <div className="flex flex-col justify-center items-center h-full min-h-96">
                             <div className="relative border-4 border-primary w-full h-full">
                                 <div className="absolute inset-0">
                                     <Image
@@ -92,7 +92,7 @@ export default function Page() {
             </section>
             <MembersAchievements limit={6} />
             <section className="py-16 container">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <div>
                         <h2>ชุมชนและกิจกรรม</h2>
                         <p className="leading">
