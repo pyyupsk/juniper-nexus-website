@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     const { sessionClaims } = auth();
 
     if (!sessionClaims?.metadata?.role || sessionClaims.metadata.role !== 'admin') {
-        redirect('/');
+        return redirect('/');
     }
 
     return (
