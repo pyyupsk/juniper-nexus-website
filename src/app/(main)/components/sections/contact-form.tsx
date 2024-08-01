@@ -62,7 +62,7 @@ export function ContactForm() {
         <section className="py-16 container">
             <div className="max-w-4xl mx-auto">
                 <h2>ส่งข้อความถึงเรา</h2>
-                <p>
+                <p className="leading">
                     มีคำถามหรือต้องการความช่วยเหลือ? ใช้แบบฟอร์มด้านล่างเพื่อส่งข้อความถึงเรา
                     แล้วเราจะติดต่อกลับโดยเร็วที่สุด
                 </p>
