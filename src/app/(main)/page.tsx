@@ -28,9 +28,11 @@ export default function Page() {
                 </div>
                 <div className="container text-center relative">
                     <h1>ยินดีต้อนรับสู่ Juniper Nexus</h1>
-                    <p className="text-xl">เข้าร่วมชุมชนที่มีชีวิตชีวาของเราและปรับปรุงประสบการณ์ Garena RoV ของคุณ!</p>
+                    <p className="text-xl">
+                        เข้าร่วมชุมชนที่มีชีวิตชีวาของเราและยกระดับประสบการณ์ Garena RoV ของคุณให้ดียิ่งขึ้น!
+                    </p>
                     <DiscordButton size="lg" rounded className="mt-8 hover:scale-105">
-                        เข้าร่วมกิลด์ของเราบนดิสคอร์ด
+                        เข้าร่วมกิลด์ของเราบน Discord
                     </DiscordButton>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-8 flex justify-center">
@@ -42,10 +44,9 @@ export default function Page() {
                     <div>
                         <h2>เกี่ยวกับเรา</h2>
                         <p className="leading">
-                            Juniper Nexus มุ่งเน้นการสร้างชุมชนที่อบอุ่นและสนุกสนานสำหรับผู้เล่น Garena RoV
+                            ที่ Juniper Nexus เรามุ่งเน้นการสร้างชุมชนที่อบอุ่นและสนุกสนานสำหรับผู้เล่น Garena RoV
                             เรามุ่งมั่นที่จะมอบสภาพแวดล้อมที่มีชีวิตชีวาและน่าดึงดูด
-                            <br />
-                            สมาชิกกิลด์สามารถเพลิดเพลินกับกิจกรรมต่าง ๆ และปรับปรุงประสบการณ์การเล่นเกมของพวกเขา.
+                            ซึ่งสมาชิกกิลด์ของเราสามารถเพลิดเพลินกับกิจกรรมที่หลากหลายและยกระดับประสบการณ์การเล่นเกมของพวกเขาให้ดียิ่งขึ้น
                         </p>
                         <div className="flex space-x-4 mt-8">
                             <DiscordButton>เข้าร่วมกิลด์ของเรา</DiscordButton>
@@ -75,7 +76,7 @@ export default function Page() {
                                 <h3>ติดอันดับ 50 กิลด์ชั้นนำของประเทศไทย</h3>
                                 <p className="text-lg">
                                     เราภูมิใจที่ได้รับการจัดอันดับเป็นหนึ่งใน 50 กิลด์ที่ดีที่สุดของประเทศไทย
-                                    ความสำเร็จนี้เป็นการสะท้อนถึงความมุ่งมั่น การทำงานเป็นทีม
+                                    ความสำเร็จนี้สะท้อนถึงความมุ่งมั่น การทำงานเป็นทีม
                                     และความหลงใหลในการสร้างชุมชนที่ยอดเยี่ยมในโลกของเกม
                                 </p>
                             </div>
@@ -109,12 +110,13 @@ export default function Page() {
             <section className="py-16 container">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2>เข้าร่วมชุมชนดิสคอร์ดของเรา</h2>
+                        <h2>เข้าร่วมชุมชน Discord ของเรา</h2>
                         <p className="leading">
-                            ร่วมเป็นส่วนหนึ่งของชุมชนเกมที่มีชีวิตชีวาของเราเชื่อมต่อกับเพื่อนเกมเมอร์แบ่งปันกลยุทธ์และข่าวสารล่าสุด
+                            ร่วมเป็นส่วนหนึ่งของชุมชนเกมที่มีชีวิตชีวาของเรา เชื่อมต่อกับเพื่อนเกมเมอร์ แบ่งปันกลยุทธ์
+                            และรับข่าวสารล่าสุด
                         </p>
                         <DiscordButton size="lg" icon className="mt-8">
-                            <span>เข้าร่วมดิสคอร์ดของเรา</span>
+                            เข้าร่วม Discord ของเรา
                         </DiscordButton>
                     </div>
                     <Widget />

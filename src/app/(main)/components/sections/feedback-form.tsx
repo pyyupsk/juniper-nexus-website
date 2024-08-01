@@ -68,7 +68,7 @@ export function FeedbackForm() {
                     height={1080}
                     className="w-full h-full object-cover opacity-50"
                 />
-                <Fade via="transparent" stop="background" />
+                <Fade via="transparent" to="background" />
             </div>
             <div className="max-w-4xl mx-auto relative">
                 <h2 className="text-center">คำติชมและข้อเสนอแนะ</h2>

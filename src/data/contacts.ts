@@ -29,12 +29,12 @@ export const email: Contact = {
 
 export const discord: Contact = {
     type: 'social',
-    name: 'ดิสคอร์ด',
+    name: ' Discord ',
     icon: IcOutlineDiscord,
-    title: 'เข้าร่วมดิสคอร์ดของเรา',
+    title: 'เข้าร่วม Discord ของเรา',
     description: 'เชื่อมต่อกับชุมชนของเราเพื่อรับการสนับสนุน',
     link: {
-        label: 'เข้าร่วมดิสคอร์ด',
+        label: 'เข้าร่วม Discord ',
         href: 'https://discord.gg/juniper-nexus',
     },
 };

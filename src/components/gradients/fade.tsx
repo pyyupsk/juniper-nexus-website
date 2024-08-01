@@ -1,14 +1,19 @@
 import { cn } from '@/lib/utils';
 
 type Props = {
-    to?: 't' | 'b' | 'l' | 'r' | 'tl' | 'tr' | 'bl' | 'br';
+    direction?: 't' | 'b' | 'l' | 'r' | 'tl' | 'tr' | 'bl' | 'br';
     via?: string;
-    stop?: string;
+    to?: string;
     className?: string;
 };
 
-export function Fade({ to = 't', via = 'transparent', stop, className }: Props) {
-    const gradient = `bg-gradient-to-${to} from-background via-${via} to-${stop}`;
-
-    return <div className={cn('absolute inset-0', gradient, className)} />;
+export function Fade({ direction = 't', via = 'transparent', to, className }: Props) {
+    return (
+        <div
+            className={cn(
+                `absolute inset-0 bg-gradient-to-${direction} from-background via-${via} ${to && `to-${to}`}`,
+                className,
+            )}
+        />
+    );
 }

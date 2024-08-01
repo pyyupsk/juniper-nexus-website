@@ -16,19 +16,19 @@ export function GetInvolved() {
                     priority
                 />
                 <Aurora className="rounded-lg opacity-50" />
-                <Fade to="r" via="background/50" stop="transparent" className="rounded-md" />
+                <Fade direction="r" via="background/50" to="transparent" className="rounded-md" />
                 <div className="relative flex items-center justify-between">
                     <div className="flex-1">
                         <h2>การมีส่วนร่วม</h2>
                         <p className="text-xl font-medium">
                             สนใจเข้าร่วมกิลด์ของเราหรือมีส่วนร่วมในโครงการของเราหรือไม่?
                             <br />
-                            เชื่อมต่อกับเราได้ที่ดิสคอร์ดและเป็นส่วนหนึ่งของชุมชนที่กำลังเติบโตของเรา
+                            เชื่อมต่อกับเราผ่าน Discord และเป็นส่วนหนึ่งของชุมชนที่กำลังเติบโตของเรา
                         </p>
                     </div>
                     <div>
                         <DiscordButton size="xl" icon>
-                            เข้าร่วมดิสคอร์ดของเรา
+                            เข้าร่วม Discord ของเรา
                         </DiscordButton>
                     </div>
                 </div>

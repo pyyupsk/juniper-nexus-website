@@ -109,9 +109,9 @@ export function Widget({ className }: { className?: string }) {
                 </div>
             </CardContent>
             <CardFooter className="flex items-center justify-between border-t p-6">
-                <p>เริ่มแฮงเอาท์กับพวกเราบนดิสคอร์ด</p>
+                <p>เริ่มแฮงเอาท์กับพวกเราบน Discord </p>
                 <Link href={data.instant_invite} target="_blank" className={buttonVariants()}>
-                    เข้าร่วมดิสคอร์ด
+                    เข้าร่วม Discord
                 </Link>
             </CardFooter>
         </Card>

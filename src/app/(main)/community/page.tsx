@@ -55,14 +55,14 @@ export default function Page() {
             </section>
             <section className="py-16 container max-w-4xl">
                 <div className="flex flex-col items-center">
-                    <h2>เชื่อมต่อกับเราบนดิสคอร์ด</h2>
+                    <h2>เชื่อมต่อกับเราบน Discord </h2>
                     <p className="leading text-center">
                         เซิร์ฟเวอร์ Discord ของเราคือหัวใจของชุมชนของเรา เข้าร่วมกับเราเพื่อมีส่วนร่วมในการอภิปราย
                         กิจกรรม และอื่นๆ อีกมากมาย
                     </p>
                     <Widget className="w-full mt-8" />
                     <DiscordButton size="xl" icon className="mt-8">
-                        เข้าร่วมดิสคอร์ดของเรา
+                        เข้าร่วม Discord ของเรา
                     </DiscordButton>
                 </div>
             </section>

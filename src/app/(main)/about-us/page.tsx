@@ -101,10 +101,10 @@ export default function Page() {
                             และการพบปะสังสรรค์เป็นประจำเพื่อให้ชุมชนของเรามีส่วนร่วมและเชื่อมโยงกันอย่างแน่นแฟ้น
                         </p>
                         <p className="leading">
-                            เข้าร่วมกับเราบนดิสคอร์ดเพื่อร่วมกิจกรรมสนุกสนานและเชื่อมต่อกับสมาชิกคนอื่นๆ ในครอบครัว
+                            เข้าร่วมกับเราบน Discord เพื่อร่วมกิจกรรมสนุกสนานและเชื่อมต่อกับสมาชิกคนอื่นๆ ในครอบครัว
                             Juniper Nexus!
                         </p>
-                        <DiscordButton className="mt-8">เข้าร่วมดิสคอร์ดของเรา</DiscordButton>
+                        <DiscordButton className="mt-8">เข้าร่วม Discord ของเรา</DiscordButton>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         {[Event1, Event2, Event3, Event4].map((image, index) => (
