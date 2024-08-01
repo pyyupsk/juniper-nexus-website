@@ -89,7 +89,7 @@
     }
 
     h2 {
-        @apply pb-2 text-3xl first:mt-0;
+        @apply pb-2 text-3xl;
     }
 
     h3 {

@@ -23,6 +23,10 @@ const nextConfig = {
                 hostname: 'lienquan.garena.vn',
                 pathname: '/wp-content/uploads/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'img.clerk.com',
+            },
         ],
     },
 };
