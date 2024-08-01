@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 
 export type Privacy = {
     title: string;
@@ -41,13 +41,13 @@ export const privacy: Privacy[] = [
     {
         title: 'ติดต่อเรา',
         description: (
-            <>
+            <Fragment>
                 หากมีคำถามหรือข้อกังวลเกี่ยวกับความเป็นส่วนตัวหรือการใช้ข้อมูลของคุณ โปรดติดต่อเราที่{' '}
                 <Link href="pyyupsk@proton.me" target="_blank" rel="noopener noreferrer" className="link">
                     pyyupsk@proton.me
                 </Link>
                 .
-            </>
+            </Fragment>
         ),
     },
 ];

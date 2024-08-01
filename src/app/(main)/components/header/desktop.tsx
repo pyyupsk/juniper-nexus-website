@@ -18,10 +18,7 @@ export function Desktop({ user, pathname, scrolled }: Props) {
                     <RenderLink key={link.href} link={link} pathname={pathname} scrolled={scrolled} />
                 ))}
             </nav>
-            <div className="flex gap-2 min-w-[200px] justify-end">
-                <Link href="/support" className={buttonVariants({ variant: 'ghost' })}>
-                    สนับสนุน
-                </Link>
+            <div className="flex min-w-[200px] justify-end">
                 <Link href={user ? '/members-area' : '/sign-in'} className={buttonVariants()}>
                     {user ? 'พื้นที่สมาชิก' : 'เข้าสู่ระบบ'}
                 </Link>

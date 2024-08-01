@@ -11,3 +11,5 @@ export default function Layout({ children }: { children: ReactNode }) {
         </Fragment>
     );
 }
+
+export const revalidate = 3600; // revalidate at most every hour

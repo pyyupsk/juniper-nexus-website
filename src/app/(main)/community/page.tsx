@@ -4,11 +4,20 @@ import { Widget } from '@/components/discord/widget';
 import { Aurora } from '@/components/gradients/aurora';
 import { community } from '@/data/guidelines/community';
 import { member } from '@/data/guidelines/member';
+import { commonMetaData } from '@/lib/meta';
 import { CheckCircle } from 'lucide-react';
 import Image from 'next/image';
 import { MembersAchievements } from '../components/members-achievements';
 import { Activities } from '../components/sections/activities';
 import { FeedbackForm } from '../components/sections/feedback-form';
+
+export async function generateMetadata() {
+    const title = 'เข้าร่วมชุมชน';
+    const description =
+        'เข้าร่วมชุมชน Juniper Nexus! พบกับผู้เล่น Garena RoV ที่แบ่งปันประสบการณ์, เข้าร่วมกิจกรรมสนุก ๆ, และสร้างมิตรภาพที่ยั่งยืน เชื่อมต่อกับเราบน Discord และเป็นส่วนหนึ่งของครอบครัวที่สนับสนุนกัน';
+
+    return commonMetaData({ title, description });
+}
 
 export default function Page() {
     return (
