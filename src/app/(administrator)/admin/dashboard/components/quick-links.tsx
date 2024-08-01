@@ -31,10 +31,10 @@ export function QuickLinks() {
                 <Card key={link.title}>
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium">{link.title}</CardTitle>
-                        <link.icon className="size-6 text-muted-foreground" />
+                        <link.icon className="size-6 muted" />
                     </CardHeader>
                     <CardContent>
-                        <p className="text-sm text-muted-foreground">{link.desc}</p>
+                        <p className="text-sm muted">{link.desc}</p>
                     </CardContent>
                     <CardFooter>
                         <Link href={link.button.href} prefetch={false}>

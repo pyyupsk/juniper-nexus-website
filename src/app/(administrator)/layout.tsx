@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     return (
         <Fragment>
             <Header />
-            <main className="pt-28 container pb-10 flex flex-col flex-1 gap-4 md:gap-8">{children}</main>
+            <main className="pt-24 container pb-10 flex flex-col flex-1 gap-4 md:gap-8">{children}</main>
         </Fragment>
     );
 }

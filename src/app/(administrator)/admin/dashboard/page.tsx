@@ -6,6 +6,7 @@ import { RecentActivity } from './components/recent-activity';
 export default function Page() {
     return (
         <Fragment>
+            <h2>ภาพรวม</h2>
             <Overview />
             <RecentActivity />
             <QuickLinks />

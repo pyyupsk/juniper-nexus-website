@@ -46,13 +46,13 @@ export async function Overview() {
                 <Card key={item.title}>
                     <CardHeader className=" pb-2">
                         <CardTitle className="text-sm font-medium flex items-center">
-                            <item.icon className="size-4 text-muted-foreground mr-2" /> {item.title}
+                            <item.icon className="size-4 muted mr-2" /> {item.title}
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">
                             {item.value}
-                            <span className="text-sm text-muted-foreground ml-2">{item.span}</span>
+                            <span className="text-sm muted ml-2">{item.span}</span>
                         </div>
                     </CardContent>
                 </Card>

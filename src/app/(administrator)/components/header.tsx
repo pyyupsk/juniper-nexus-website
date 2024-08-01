@@ -49,7 +49,7 @@ export async function Header() {
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-52">
-                        <DropdownMenuLabel>บัญชีของฉัน</DropdownMenuLabel>
+                        <DropdownMenuLabel>ลิ้งค์ด่วน</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         {links.map((link) => (
                             <Link key={link.href} href={link.href}>

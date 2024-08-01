@@ -19,7 +19,7 @@ export function ClerkProvider({ children }: { children: ReactNode }) {
                     logoBox: 'w-full h-20',
                     logoImage: 'w-20 h-20',
                     headerTitle: 'scroll-m-20 font-semibold tracking-tight text-2xl text-primary',
-                    headerSubtitle: 'text-muted-foreground leading-7 text-base',
+                    headerSubtitle: 'muted leading-7 text-base',
                     socialButtonsBlockButton: buttonVariants(),
                     socialButtonsBlockButtonText: 'font-semibold text-base',
                     footer: 'bg-gradient-to-b from-card to-card',

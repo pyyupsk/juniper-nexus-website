@@ -13,11 +13,7 @@ export function RenderLink({ link, pathname, scrolled }: Props) {
         <Link
             key={link.href}
             href={link.href}
-            className={cn(
-                'hover:text-primary transition-colors',
-                pathname !== '/' && 'text-muted-foreground',
-                scrolled && 'text-muted-foreground',
-            )}
+            className={cn('hover:text-primary transition-colors', pathname !== '/' && 'muted', scrolled && 'muted')}
         >
             {link.name}
         </Link>
