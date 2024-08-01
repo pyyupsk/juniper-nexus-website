@@ -31,7 +31,7 @@ export function Panel({ users }: { users: User[] }) {
     return (
         <Fragment>
             <div className="flex items-center justify-between">
-                <h2>การจัดการผู้ใช้</h2>
+                <h3>การจัดการผู้ใช้</h3>
                 <div className="flex items-center gap-4">
                     <div className="relative flex-1 max-w-md">
                         <Search className="absolute left-2.5 top-[50%] translate-y-[-50%] size-4 muted" />

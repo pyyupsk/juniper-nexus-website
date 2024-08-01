@@ -6,9 +6,9 @@ import { RecentActivity } from './components/recent-activity';
 export default function Page() {
     return (
         <Fragment>
-            <h2>ภาพรวม</h2>
+            <h3>ภาพรวม</h3>
             <Overview />
-            <RecentActivity />
+            <RecentActivity limit={5} />
             <QuickLinks />
         </Fragment>
     );

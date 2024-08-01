@@ -13,8 +13,8 @@ type Log = {
 
 const production = env.NODE_ENV === 'production';
 
-export async function RecentActivity() {
-    const oneMonthAgo = dayjs().subtract(1, 'month').toDate();
+export async function RecentActivity({ limit }: { limit?: number | undefined }) {
+    const oneMonthAgo = dayjs().subtract(3, 'month').toDate();
 
     const [achievements, events, coins] = production
         ? await Promise.all([
@@ -51,15 +51,17 @@ export async function RecentActivity() {
         })),
     ];
 
-    const data = logs.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime()).slice(0, 5);
+    const data = logs.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime()).slice(0, limit);
 
     return (
         <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">กิจกรรมที่ผ่านมาใน 1 เดือน</CardTitle>
-                <Link href="/admin/logs" className="text-sm font-medium text-primary" prefetch={false}>
-                    ดูทั้งหมด
-                </Link>
+                <CardTitle className="text-sm font-medium">กิจกรรมที่ผ่านมาใน 3 เดือน</CardTitle>
+                {limit && (
+                    <Link href="/admin/dashboard/logs" className="text-sm font-medium text-primary" prefetch={false}>
+                        ดูทั้งหมด
+                    </Link>
+                )}
             </CardHeader>
             <CardContent>
                 <Table>
@@ -69,24 +71,25 @@ export async function RecentActivity() {
                             <TableHead>เวลา</TableHead>
                         </TableRow>
                     </TableHeader>
-                    {data.length > 0 ? (
-                        <TableBody>
-                            {data.map((log) => (
-                                <TableRow key={log.timestamp.getTime()}>
-                                    <TableCell>{log.action}</TableCell>
-                                    <TableCell className="muted">
-                                        {dayjs(log.timestamp).locale('th').format('DD MMMM YYYY')}
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    ) : (
-                        <TableBody className="h-[200px] relative">
-                            <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 muted">
-                                ไม่มีข้อมูลกิจกรรมล่าสุดภายใน 1 เดือน
-                            </p>
-                        </TableBody>
-                    )}
+                    <TableBody>
+                        {data.map((log) => (
+                            <TableRow key={log.timestamp.getTime()}>
+                                <TableCell>{log.action}</TableCell>
+                                <TableCell className="muted">
+                                    {dayjs(log.timestamp).locale('th').format('DD MMMM YYYY')}
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                        {data.length === 0 && (
+                            <TableRow>
+                                <TableCell colSpan={2}>
+                                    <div className="min-h-[200px] flex items-center justify-center">
+                                        <p className="muted">ไม่พบข้อมูลกิจกรรมล่าสุดภายใน 3 เดือน</p>
+                                    </div>
+                                </TableCell>
+                            </TableRow>
+                        )}
+                    </TableBody>
                 </Table>
             </CardContent>
         </Card>
