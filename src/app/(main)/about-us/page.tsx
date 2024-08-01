@@ -3,12 +3,11 @@ import Event1 from '@/assets/images/meetings/2.jpg';
 import Event2 from '@/assets/images/meetings/3.jpg';
 import Event3 from '@/assets/images/meetings/4.jpg';
 import Event4 from '@/assets/images/meetings/5.jpg';
-import { buttonVariants } from '@/components/ui/button';
-import { discord } from '@/data/contacts';
+import { DiscordButton } from '@/components/discord/button';
+import { Aurora } from '@/components/gradients/aurora';
 import { commonMetaData } from '@/lib/meta';
 import { Sparkles, UsersRound } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { MembersAchievements } from '../components/members-achievements';
 import { GetInvolved } from '../components/sections/get-involved';
 
@@ -75,7 +74,7 @@ export default function Page() {
                                         sizes="(100vw, 100vh)"
                                         className="object-cover w-full h-full opacity-80"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-primary opacity-20 rounded-lg" />
+                                    <Aurora />
                                 </div>
                             </div>
                             <p className="italic muted quote text-sm">
@@ -91,7 +90,7 @@ export default function Page() {
                     <p className="quote">เราเฉลิมฉลองในแต่ละเหตุการณ์สำคัญและมุ่งมั่นสู่ความเป็นเลิศ</p>
                 </div>
             </section>
-            <MembersAchievements limit={3} />
+            <MembersAchievements limit={6} />
             <section className="py-16 container">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div>
@@ -105,13 +104,7 @@ export default function Page() {
                             เข้าร่วมกับเราบนดิสคอร์ดเพื่อร่วมกิจกรรมสนุกสนานและเชื่อมต่อกับสมาชิกคนอื่นๆ ในครอบครัว
                             Juniper Nexus!
                         </p>
-                        <Link
-                            href={discord.link.href}
-                            target="_blank"
-                            className={buttonVariants({ className: 'mt-8' })}
-                        >
-                            เข้าร่วมดิสคอร์ดของเรา
-                        </Link>
+                        <DiscordButton className="mt-8">เข้าร่วมดิสคอร์ดของเรา</DiscordButton>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         {[Event1, Event2, Event3, Event4].map((image, index) => (

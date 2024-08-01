@@ -1,6 +1,7 @@
 'use client';
 
 import { send } from '@/actions/contact';
+import { Fade } from '@/components/gradients/fade';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -65,11 +66,11 @@ export function FeedbackForm() {
                     alt="Garena RoV Background"
                     width={1920}
                     height={1080}
-                    className="w-full h-full object-cover opacity-20"
+                    className="w-full h-full object-cover opacity-50"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background" />
+                <Fade via="transparent" stop="background" />
             </div>
-            <div className="max-w-3xl mx-auto relative">
+            <div className="max-w-4xl mx-auto relative">
                 <h2 className="text-center">คำติชมและข้อเสนอแนะ</h2>
                 <p className="text-center leading">
                     เราให้ความสำคัญกับความคิดเห็นของคุณ! แบ่งปันความคิดและข้อเสนอแนะของคุณเพื่อช่วยให้เราปรับปรุงชุมชน

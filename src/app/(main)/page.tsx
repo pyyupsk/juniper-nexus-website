@@ -1,12 +1,15 @@
 import AboutImage from '@/assets/images/meetings/1.jpg';
-import { DiscordWidget } from '@/components/discord-widget';
+import { DiscordButton } from '@/components/discord/button';
+import { Widget } from '@/components/discord/widget';
+import { Aurora } from '@/components/gradients/aurora';
+import { Fade } from '@/components/gradients/fade';
 import { buttonVariants } from '@/components/ui/button';
-import { contacts, discord } from '@/data/contacts';
 import { ArrowDown, Sparkles, UsersRound } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MembersAchievements } from './components/members-achievements';
 import { Activities } from './components/sections/activities';
+import { ContactsCard } from './components/sections/contacts-card';
 import { GetInvolved } from './components/sections/get-involved';
 
 export default function Page() {
@@ -21,18 +24,14 @@ export default function Page() {
                         height={1080}
                         className="object-cover w-full h-full opacity-20"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent" />
+                    <Fade via="transparent" />
                 </div>
                 <div className="container text-center relative">
                     <h1>ยินดีต้อนรับสู่ Juniper Nexus</h1>
                     <p className="text-xl">เข้าร่วมชุมชนที่มีชีวิตชีวาของเราและปรับปรุงประสบการณ์ Garena RoV ของคุณ!</p>
-                    <Link
-                        href={discord.link.href}
-                        target="_blank"
-                        className={buttonVariants({ size: 'lg', rounded: true, className: 'mt-8 hover:scale-105' })}
-                    >
+                    <DiscordButton size="lg" rounded className="mt-8 hover:scale-105">
                         เข้าร่วมกิลด์ของเราบนดิสคอร์ด
-                    </Link>
+                    </DiscordButton>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-8 flex justify-center">
                     <ArrowDown className="animate-bounce size-8" />
@@ -49,9 +48,7 @@ export default function Page() {
                             สมาชิกกิลด์สามารถเพลิดเพลินกับกิจกรรมต่าง ๆ และปรับปรุงประสบการณ์การเล่นเกมของพวกเขา.
                         </p>
                         <div className="flex space-x-4 mt-8">
-                            <Link href={discord.link.href} target="_blank" className={buttonVariants()}>
-                                เข้าร่วมกิลด์ของเรา
-                            </Link>
+                            <DiscordButton>เข้าร่วมกิลด์ของเรา</DiscordButton>
                             <Link href="/about-us" className={buttonVariants({ variant: 'outline' })}>
                                 เรียนรู้เพิ่มเติม
                             </Link>
@@ -64,7 +61,7 @@ export default function Page() {
                             sizes="(100vw, 100vh)"
                             className="rounded-lg shadow-xl w-full h-full max-h-96 object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-primary opacity-20 rounded-lg" />
+                        <Aurora className="rounded-lg" />
                     </div>
                 </div>
                 <Activities />
@@ -103,18 +100,12 @@ export default function Page() {
                                     เข้าร่วมกับเราเพื่อเป็นส่วนหนึ่งของชุมชนที่แข็งแกร่งและเติบโตอย่างรวดเร็ว
                                 </p>
                             </div>
-                            <Link
-                                href={discord.link.href}
-                                target="_blank"
-                                className={buttonVariants({ variant: 'secondary' })}
-                            >
-                                เข้าร่วมกิลด์ของเรา
-                            </Link>
+                            <DiscordButton variant="secondary">เข้าร่วมกิลด์ของเรา</DiscordButton>
                         </div>
                     </div>
                 </div>
             </section>
-            <MembersAchievements limit={3} />
+            <MembersAchievements limit={6} />
             <section className="py-16 container">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div>
@@ -122,49 +113,17 @@ export default function Page() {
                         <p className="leading">
                             ร่วมเป็นส่วนหนึ่งของชุมชนเกมที่มีชีวิตชีวาของเราเชื่อมต่อกับเพื่อนเกมเมอร์แบ่งปันกลยุทธ์และข่าวสารล่าสุด
                         </p>
-                        <Link
-                            href={discord.link.href}
-                            target="_blank"
-                            className={buttonVariants({ size: 'lg', className: 'mt-8' })}
-                        >
-                            <discord.icon className="size-6 mr-2" />
+                        <DiscordButton size="lg" icon className="mt-8">
                             <span>เข้าร่วมดิสคอร์ดของเรา</span>
-                        </Link>
+                        </DiscordButton>
                     </div>
-                    <DiscordWidget />
+                    <Widget />
                 </div>
             </section>
             <GetInvolved />
             <section className="py-16 container">
                 <h2 className="text-center">ติดต่อเรา</h2>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
-                    {contacts.map((contact) => (
-                        <div
-                            key={contact.title}
-                            className="bg-gradient-to-br flex flex-col justify-between from-primary to-primary/50 text-primary-foreground p-6 rounded-lg shadow-sm"
-                        >
-                            <div>
-                                <contact.icon className="size-12 mb-4" />
-                                <h3>{contact.title}</h3>
-                            </div>
-                            <div>
-                                <p className="font-medium">{contact.description}</p>
-                                <Link
-                                    href={contact.link.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={buttonVariants({
-                                        variant: 'secondary',
-                                        className: 'w-full lg:w-auto mt-4',
-                                    })}
-                                >
-                                    <span className="hidden lg:inline">{contact.link.label}</span>
-                                    <span className="inline lg:hidden">{contact.name}</span>
-                                </Link>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                <ContactsCard />
             </section>
         </main>
     );

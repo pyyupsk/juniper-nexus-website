@@ -1,12 +1,11 @@
 import MeetingImage from '@/assets/images/meetings/6.jpg';
-import { DiscordWidget } from '@/components/discord-widget';
-import { buttonVariants } from '@/components/ui/button';
-import { discord } from '@/data/contacts';
+import { DiscordButton } from '@/components/discord/button';
+import { Widget } from '@/components/discord/widget';
+import { Aurora } from '@/components/gradients/aurora';
 import { community } from '@/data/guidelines/community';
 import { member } from '@/data/guidelines/member';
 import { CheckCircle } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { MembersAchievements } from '../components/members-achievements';
 import { Activities } from '../components/sections/activities';
 import { FeedbackForm } from '../components/sections/feedback-form';
@@ -28,15 +27,8 @@ export default function Page() {
                             ที่นี่ คุณจะพบข้อมูลเกี่ยวกับวิธีการมีส่วนร่วม กิจกรรมที่กำลังจะเกิดขึ้น
                             และวิธีการเชื่อมต่อกับเรา
                         </p>
-                        <Link
-                            href={discord.link.href}
-                            target="_blank"
-                            className={buttonVariants({ className: 'mt-8' })}
-                        >
-                            เข้าร่วมชุมชนของเรา
-                        </Link>
+                        <DiscordButton className="mt-8">เข้าร่วมชุมชนของเรา</DiscordButton>
                     </div>
-
                     <div className="relative">
                         <Image
                             src={MeetingImage}
@@ -44,6 +36,7 @@ export default function Page() {
                             sizes="(100vw, 100vh)"
                             className="w-full h-auto rounded-lg shadow-lg transform -rotate-3"
                         />
+                        <Aurora className="rounded-lg transform -rotate-3" />
                         <div className="absolute top-0 right-0 bg-primary text-primary-foreground font-bold py-2 px-4 rounded-bl-lg transform rotate-3">
                             Meeting ครั้งที่ 2
                         </div>
@@ -51,21 +44,17 @@ export default function Page() {
                 </div>
                 <Activities />
             </section>
-            <section className="py-16 container max-w-3xl">
+            <section className="py-16 container max-w-4xl">
                 <div className="flex flex-col items-center">
                     <h2>เชื่อมต่อกับเราบนดิสคอร์ด</h2>
                     <p className="leading text-center">
                         เซิร์ฟเวอร์ Discord ของเราคือหัวใจของชุมชนของเรา เข้าร่วมกับเราเพื่อมีส่วนร่วมในการอภิปราย
                         กิจกรรม และอื่นๆ อีกมากมาย
                     </p>
-                    <DiscordWidget className="w-full mt-8" />
-                    <Link
-                        href={discord.link.href}
-                        target="_blank"
-                        className={buttonVariants({ size: 'xl', className: 'mt-8' })}
-                    >
+                    <Widget className="w-full mt-8" />
+                    <DiscordButton size="xl" icon className="mt-8">
                         เข้าร่วมดิสคอร์ดของเรา
-                    </Link>
+                    </DiscordButton>
                 </div>
             </section>
             <section className="py-16 container">
@@ -78,7 +67,7 @@ export default function Page() {
                             height={800}
                             className="object-cover w-full h-full opacity-20"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-primary opacity-20 rounded-lg" />
+                        <Aurora className="rounded-lg" />
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
                         <div>

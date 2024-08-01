@@ -5,11 +5,11 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { IcOutlineDiscord } from './icons/IcOutlineDiscord';
-import { buttonVariants } from './ui/button';
-import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
+import { IcOutlineDiscord } from '../icons/IcOutlineDiscord';
+import { buttonVariants } from '../ui/button';
+import { Card, CardContent, CardFooter, CardHeader } from '../ui/card';
 
-export interface Widget {
+export interface WidgetResponse {
     id: string;
     name: string;
     instant_invite: string;
@@ -47,8 +47,8 @@ export enum Status {
     Online = 'online',
 }
 
-export function DiscordWidget({ className }: { className?: string }) {
-    const [data, setData] = useState<Widget>({
+export function Widget({ className }: { className?: string }) {
+    const [data, setData] = useState<WidgetResponse>({
         id: '',
         name: '',
         instant_invite: '',

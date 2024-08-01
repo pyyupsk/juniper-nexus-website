@@ -1,29 +1,35 @@
-import { buttonVariants } from '@/components/ui/button';
-import { discord } from '@/data/contacts';
-import Link from 'next/link';
+import { DiscordButton } from '@/components/discord/button';
+import { Aurora } from '@/components/gradients/aurora';
+import { Fade } from '@/components/gradients/fade';
+import Image from 'next/image';
 
 export function GetInvolved() {
     return (
         <section className="py-16 container">
-            <div className="bg-gradient-to-r from-primary to-primary/50 rounded-lg border text-primary-foreground shadow-sm p-16">
-                <div className="flex items-center justify-between">
+            <div className="relative rounded-lg shadow-sm p-16">
+                <Image
+                    src="https://lienquan.garena.vn/wp-content/uploads/2024/07/15901.jpg"
+                    alt="Garena RoV Background"
+                    width={1920}
+                    height={1080}
+                    className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                    priority
+                />
+                <Aurora className="rounded-lg opacity-50" />
+                <Fade to="r" via="background/50" stop="transparent" className="rounded-md" />
+                <div className="relative flex items-center justify-between">
                     <div className="flex-1">
-                        <h2 className="w-fit">การมีส่วนร่วม</h2>
+                        <h2>การมีส่วนร่วม</h2>
                         <p className="text-xl font-medium">
                             สนใจเข้าร่วมกิลด์ของเราหรือมีส่วนร่วมในโครงการของเราหรือไม่?
                             <br />
                             เชื่อมต่อกับเราได้ที่ดิสคอร์ดและเป็นส่วนหนึ่งของชุมชนที่กำลังเติบโตของเรา
                         </p>
                     </div>
-                    <div className="mt-8 lg:mt-0 lg:flex-shrink-0">
-                        <Link
-                            href={discord.link.href}
-                            target="_blank"
-                            className={buttonVariants({ variant: 'secondary', size: 'xl' })}
-                        >
-                            <discord.icon className="size-6 mr-2" />
+                    <div>
+                        <DiscordButton size="xl" icon>
                             เข้าร่วมดิสคอร์ดของเรา
-                        </Link>
+                        </DiscordButton>
                     </div>
                 </div>
             </div>
