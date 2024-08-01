@@ -15,8 +15,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const links = [
-    { name: 'หน้าหลัก', href: '/admin' },
+    { name: 'หน้าหลัก', href: '/admin/dashboard' },
     { name: 'สมาชิกทั้งหมด', href: '/admin/users' },
+    { name: 'ความสำเร็จของสมาชิก', href: '/admin/achievements' },
     { name: 'จัดการกิจกรรม', href: '/admin/events' },
     { name: 'จัดการเหรียญ', href: '/admin/coins' },
 ];
