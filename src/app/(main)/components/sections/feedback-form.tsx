@@ -1,7 +1,6 @@
 'use client';
 
 import { send } from '@/actions/contact';
-import { Fade } from '@/components/gradients/fade';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -68,7 +67,7 @@ export function FeedbackForm() {
                     height={1080}
                     className="w-full h-full object-cover opacity-50"
                 />
-                <Fade via="transparent" to="background" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background" />
             </div>
             <div className="max-w-4xl container relative">
                 <h2 className="text-center">คำติชมและข้อเสนอแนะ</h2>
@@ -78,7 +77,7 @@ export function FeedbackForm() {
                 </p>
                 <Form {...form}>
                     <form
-                        className="bg-card text-card-foreground border shadow-lg rounded-lg p-6 mt-6"
+                        className="bg-card/80 text-card-foreground border shadow-lg rounded-lg p-6 mt-6 backdrop-blur-sm"
                         onSubmit={form.handleSubmit(onSubmit)}
                     >
                         <input

@@ -1,6 +1,5 @@
 import { DiscordButton } from '@/components/discord/button';
 import { Aurora } from '@/components/gradients/aurora';
-import { Fade } from '@/components/gradients/fade';
 import Image from 'next/image';
 
 export function GetInvolved() {
@@ -16,7 +15,7 @@ export function GetInvolved() {
                     priority
                 />
                 <Aurora className="rounded-lg opacity-50" />
-                <Fade direction="r" via="background/50" to="transparent" className="rounded-md" />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-transparent rounded-md backdrop-blur-sm" />
                 <div className="relative flex items-center justify-between">
                     <div>
                         <h2>การมีส่วนร่วม</h2>

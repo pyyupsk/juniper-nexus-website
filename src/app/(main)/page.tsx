@@ -2,7 +2,6 @@ import AboutImage from '@/assets/images/meetings/1.jpg';
 import { DiscordButton } from '@/components/discord/button';
 import { Widget } from '@/components/discord/widget';
 import { Aurora } from '@/components/gradients/aurora';
-import { Fade } from '@/components/gradients/fade';
 import { buttonVariants } from '@/components/ui/button';
 import { ArrowDown, Sparkles, UsersRound } from 'lucide-react';
 import Image from 'next/image';
@@ -24,7 +23,7 @@ export default function Page() {
                         height={1080}
                         className="object-cover w-full h-full opacity-20"
                     />
-                    <Fade via="transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent" />
                 </div>
                 <div className="container text-center relative">
                     <h1>ยินดีต้อนรับสู่ Juniper Nexus</h1>
