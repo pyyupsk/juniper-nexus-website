@@ -29,7 +29,7 @@ export async function Header() {
 
     return (
         <header className="bg-background/80 border-b shadow-sm backdrop-blur fixed top-0 z-50 w-full">
-            <div className="flex items-center h-16 container justify-between">
+            <div className="flex items-center h-16 px-4 justify-between">
                 <Link href="/admin" className="flex items-center gap-2" prefetch={false}>
                     <Logo width={32} height={32} />
                     <span className="font-medium">Admin Dashboard</span>
