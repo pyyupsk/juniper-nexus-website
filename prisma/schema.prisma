@@ -37,10 +37,11 @@ model Event {
 }
 
 model User {
-  id       Int    @id @unique @default(autoincrement())
-  user_id  String @unique
-  username String
-  Coin     Coin[]
+  id         Int      @id @unique @default(autoincrement())
+  user_id    String   @unique
+  username   String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  Coin       Coin[]
 }
 
 model VoiceLevel {

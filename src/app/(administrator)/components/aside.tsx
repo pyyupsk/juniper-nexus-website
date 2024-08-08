@@ -41,7 +41,7 @@ const themes = [
     { name: 'System', value: 'system', icon: MonitorCog },
 ];
 
-export default function Aside() {
+export function Aside() {
     const { theme, setTheme } = useTheme();
     const pathname = usePathname();
 

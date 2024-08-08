@@ -1,8 +1,10 @@
 import { auth } from '@clerk/nextjs/server';
+import dynamic from 'next/dynamic';
 import { redirect } from 'next/navigation';
 import { ReactNode } from 'react';
-import Aside from './components/aside';
 import { Header } from './components/header';
+
+const Aside = dynamic(() => import('./components/aside').then((mod) => mod.Aside), { ssr: false });
 
 export default function Layout({ children }: { children: ReactNode }) {
     const { sessionClaims } = auth();

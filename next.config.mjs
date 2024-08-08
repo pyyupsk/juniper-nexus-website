@@ -27,6 +27,16 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'img.clerk.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'cdn.discordapp.com',
+                pathname: '/avatars/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.discordapp.com',
+                pathname: '/embed/avatars/**',
+            },
         ],
     },
 };

@@ -5,25 +5,37 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { User } from '@prisma/client';
 import dayjs from 'dayjs';
-import { Eye, Plus, Search, Trash } from 'lucide-react';
+import { Eye, Plus, Search, UserRoundPlus } from 'lucide-react';
 import Link from 'next/link';
 import { ChangeEvent, Fragment, useState } from 'react';
 import 'dayjs/locale/th';
+import { add } from '@/actions/discord/guild-member';
+import { MemberElement, MemberMember } from '@/actions/discord/members';
+import { toast } from '@/components/ui/use-toast';
+import { env } from '@/env';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
-export function Panel({ users }: { users: User[] }) {
+export function Panel({ members }: { members: MemberElement[] }) {
+    const router = useRouter();
+
     const [searchTerm, setSearchTerm] = useState<string>('');
-    const [filteredUsers, setFilteredUsers] = useState<User[]>(users);
+    const [filteredMembers, setFilteredMembers] = useState<MemberElement[]>(
+        members.filter(({ member }) => !member.roles.includes(env.NEXT_PUBLIC_MEMBER_ROLE_ID)),
+    );
     const [page, setPage] = useState<number>(1);
+    const [submitted, setSubmitted] = useState<boolean>(false);
 
     const filterUsers = (term: string) => {
-        const filtered = users.filter(
-            (user) =>
-                user.username.toLowerCase().includes(term.toLowerCase()) ||
-                user.user_id.toLowerCase().includes(term.toLowerCase()),
+        const filtered = members.filter(
+            ({ member }) =>
+                member.nick?.toLowerCase().includes(term.toLowerCase()) ||
+                member.user.global_name?.toLowerCase().includes(term.toLowerCase()) ||
+                member.user.username?.toLowerCase().includes(term.toLowerCase()) ||
+                member.user.id?.toLowerCase().includes(term.toLowerCase()),
         );
-        setFilteredUsers(filtered);
+        setFilteredMembers(filtered);
     };
 
     const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,10 +43,41 @@ export function Panel({ users }: { users: User[] }) {
         filterUsers(e.target.value);
     };
 
+    const handleCreate = async (member: MemberMember) => {
+        setSubmitted(true);
+
+        try {
+            const { success, message } = await add(member);
+            toast({
+                title: success ? 'สมัครสมาชิกสําเร็จ' : 'สมัครสมาชิกไม่สําเร็จ',
+                description: message,
+                variant: success ? 'default' : 'destructive',
+            });
+            router.push('/admin/users');
+        } catch (error) {
+            console.error(error);
+            toast({
+                title: 'เกิดข้อผิดพลาด',
+                description: 'ไม่สามารถสมัครสมาชิกได้',
+                variant: 'destructive',
+            });
+        } finally {
+            setSubmitted(false);
+        }
+    };
+
+    const discordAvatar = (member: MemberMember) => {
+        if (member.user.avatar) {
+            return `https://cdn.discordapp.com/avatars/${member.user.id}/${member.user.avatar}.webp`;
+        } else {
+            return `https://cdn.discordapp.com/embed/avatars/${parseInt(member.user.discriminator) % 5}.png`;
+        }
+    };
+
     return (
         <Fragment>
             <div className="flex items-center justify-between">
-                <h3>การจัดการผู้ใช้</h3>
+                <h3>สมาชิกจำนวน {filteredMembers.length}</h3>
                 <div className="flex items-center gap-4">
                     <div className="relative flex-1 max-w-md">
                         <Search className="absolute left-2.5 top-[50%] translate-y-[-50%] size-4 muted" />
@@ -59,29 +102,39 @@ export function Panel({ users }: { users: User[] }) {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>User ID</TableHead>
+                                <TableHead>Name</TableHead>
                                 <TableHead>Discord ID</TableHead>
-                                <TableHead>Username</TableHead>
-                                <TableHead>Create Date</TableHead>
+                                <TableHead>Member Since</TableHead>
                                 <TableHead className="justify-end flex">Actions</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {filteredUsers.slice((page - 1) * 10, page * 10).map((user) => (
-                                <TableRow key={user.id}>
-                                    <TableCell>{user.id}</TableCell>
-                                    <TableCell>{user.user_id}</TableCell>
-                                    <TableCell>{user.username}</TableCell>
-                                    <TableCell>
-                                        {dayjs(user.created_at).locale('th').format('DD MMMM YYYY, เวลา HH:mm นาที')}
+                            {filteredMembers.slice((page - 1) * 10, page * 10).map(({ member }) => (
+                                <TableRow key={member.user.id}>
+                                    <TableCell className="flex items-center gap-2">
+                                        <Image
+                                            src={discordAvatar(member)}
+                                            alt={member.user.username}
+                                            width={32}
+                                            height={32}
+                                            className="rounded-full"
+                                        />
+                                        <div className="flex flex-col">
+                                            <p>{member.nick || member.user.global_name || member.user.username}</p>
+                                            <p className="text-sm text-muted-foreground -mt-2">
+                                                {member.user.username}
+                                            </p>
+                                        </div>
                                     </TableCell>
+                                    <TableCell>{member.user.id}</TableCell>
+                                    <TableCell>{dayjs(member.joined_at).locale('th').format('DD MMMM YYYY')}</TableCell>
                                     <TableCell className="justify-end flex">
                                         <div className="flex items-center">
                                             <TooltipProvider>
                                                 <Tooltip>
                                                     <TooltipTrigger asChild>
                                                         <Link
-                                                            href={`https://discord.com/users/${user.user_id}`}
+                                                            href={`https://discord.com/users/${member.user.id}`}
                                                             target="_blank"
                                                         >
                                                             <Button variant="ghost" size="icon">
@@ -98,15 +151,18 @@ export function Panel({ users }: { users: User[] }) {
                                             <TooltipProvider>
                                                 <Tooltip>
                                                     <TooltipTrigger asChild>
-                                                        <Link href={`/admin/users/delete/${user.id}`}>
-                                                            <Button variant="ghost" size="icon">
-                                                                <Trash className="size-4" />
-                                                                <span className="sr-only">Delete</span>
-                                                            </Button>
-                                                        </Link>
+                                                        <Button
+                                                            variant="ghost"
+                                                            size="icon"
+                                                            onClick={() => handleCreate(member)}
+                                                            disabled={submitted}
+                                                        >
+                                                            <UserRoundPlus className="size-4" />
+                                                            <span className="sr-only">Add</span>
+                                                        </Button>
                                                     </TooltipTrigger>
                                                     <TooltipContent>
-                                                        <p>ลบผู้ใช้ออกจากฐานข้อมูล</p>
+                                                        <p>เพิ่มผู้ใช้ในฐานข้อมูลของสมาชิกกิลด์</p>
                                                     </TooltipContent>
                                                 </Tooltip>
                                             </TooltipProvider>
@@ -117,8 +173,11 @@ export function Panel({ users }: { users: User[] }) {
                         </TableBody>
                     </Table>
                 </CardContent>
-                <CardFooter className="flex justify-end">
-                    <div className="flex justify-end gap-2">
+                <CardFooter className="flex justify-end gap-2">
+                    <p className="text-sm text-muted-foreground text-nowrap">
+                        หน้าที่ ({page}/{Math.ceil(filteredMembers.length / 10)})
+                    </p>
+                    <div className="flex justify-center gap-2">
                         <Button
                             variant="outline"
                             size="sm"
@@ -133,7 +192,7 @@ export function Panel({ users }: { users: User[] }) {
                             size="sm"
                             className="w-full"
                             onClick={() => setPage((prev) => prev + 1)}
-                            disabled={filteredUsers.length < 10 || page === Math.ceil(filteredUsers.length / 10)}
+                            disabled={filteredMembers.length < 10 || page === Math.ceil(filteredMembers.length / 10)}
                         >
                             หน้าถัดไป
                         </Button>
