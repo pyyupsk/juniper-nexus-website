@@ -5,23 +5,23 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { User } from '@prisma/client';
+import { Users } from '@prisma/client';
 import dayjs from 'dayjs';
 import { Eye, Plus, Search, Trash } from 'lucide-react';
 import Link from 'next/link';
 import { ChangeEvent, Fragment, useState } from 'react';
 import 'dayjs/locale/th';
 
-export function Panel({ users }: { users: User[] }) {
+export function Panel({ users }: { users: Users[] }) {
     const [searchTerm, setSearchTerm] = useState<string>('');
-    const [filteredUsers, setFilteredUsers] = useState<User[]>(users);
+    const [filteredUsers, setFilteredUsers] = useState<Users[]>(users);
     const [page, setPage] = useState<number>(1);
 
     const filterUsers = (term: string) => {
         const filtered = users.filter(
             (user) =>
                 user.username.toLowerCase().includes(term.toLowerCase()) ||
-                user.user_id.toLowerCase().includes(term.toLowerCase()),
+                user.discord_id.toLowerCase().includes(term.toLowerCase()),
         );
         setFilteredUsers(filtered);
     };
@@ -70,7 +70,7 @@ export function Panel({ users }: { users: User[] }) {
                             {filteredUsers.slice((page - 1) * 10, page * 10).map((user) => (
                                 <TableRow key={user.id}>
                                     <TableCell>{user.id}</TableCell>
-                                    <TableCell>{user.user_id}</TableCell>
+                                    <TableCell>{user.discord_id}</TableCell>
                                     <TableCell>{user.username}</TableCell>
                                     <TableCell>
                                         {dayjs(user.created_at).locale('th').format('DD MMMM YYYY, เวลา HH:mm นาที')}
@@ -81,7 +81,7 @@ export function Panel({ users }: { users: User[] }) {
                                                 <Tooltip>
                                                     <TooltipTrigger asChild>
                                                         <Link
-                                                            href={`https://discord.com/users/${user.user_id}`}
+                                                            href={`https://discord.com/users/${user.discord_id}`}
                                                             target="_blank"
                                                         >
                                                             <Button variant="ghost" size="icon">

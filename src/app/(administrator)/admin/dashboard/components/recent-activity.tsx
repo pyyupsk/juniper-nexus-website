@@ -23,31 +23,31 @@ export async function RecentActivity({ limit }: { limit?: number | undefined }) 
                   orderBy: { created_at: 'desc' },
                   where: { created_at: { gte: oneMonthAgo } },
               }),
-              prisma.event.findMany({
+              prisma.events.findMany({
                   take: 5,
-                  orderBy: { timestamp: 'desc' },
-                  where: { timestamp: { gte: oneMonthAgo } },
+                  orderBy: { created_at: 'desc' },
+                  where: { created_at: { gte: oneMonthAgo } },
               }),
-              prisma.coin.findMany({
+              prisma.coins.findMany({
                   take: 5,
-                  orderBy: { timestamp: 'desc' },
-                  where: { timestamp: { gte: oneMonthAgo } },
+                  orderBy: { created_at: 'desc' },
+                  where: { created_at: { gte: oneMonthAgo } },
               }),
           ])
         : [[], [], []];
 
     const logs: Log[] = [
         ...achievements.map((achievement) => ({
-            action: `ความสำเร็จใหม่ ${achievement.title} ของ ${achievement.member} ได้ถูกสร้างขึ้น`,
+            action: `ความสำเร็จใหม่ ${achievement.name} ของ ${achievement.user_id} ได้ถูกสร้างขึ้น`,
             timestamp: achievement.created_at ?? new Date(),
         })),
         ...events.map((event) => ({
-            action: `${event.event_name} ได้ถูกสร้างขึ้น`,
-            timestamp: event.timestamp,
+            action: `${event.name} ได้ถูกสร้างขึ้น`,
+            timestamp: event.created_at,
         })),
         ...coins.map((coin) => ({
             action: `ผู้ใช้ ${coin.user_id} ${coin.amount > 0 ? 'ได้รับ' : 'ถูกหัก'} ${coin.amount} เหรียญ`,
-            timestamp: coin.timestamp,
+            timestamp: coin.created_at,
         })),
     ];
 

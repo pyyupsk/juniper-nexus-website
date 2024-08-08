@@ -6,11 +6,11 @@ import { Calendar, Coins, Trophy, UserRound } from 'lucide-react';
 const production = env.NODE_ENV === 'production';
 
 export async function Overview() {
-    const users = production ? await prisma.user.count() : Math.floor(Math.random() * 1000);
+    const users = production ? await prisma.users.count() : Math.floor(Math.random() * 1000);
     const achievements = production ? await prisma.achievements.count() : Math.floor(Math.random() * 1000);
-    const events = production ? await prisma.event.count() : Math.floor(Math.random() * 1000);
+    const events = production ? await prisma.events.count() : Math.floor(Math.random() * 1000);
     const coins = production
-        ? await prisma.coin.findMany()
+        ? await prisma.coins.findMany()
         : [...Array(4)].map(() => ({ amount: Math.floor(Math.random() * 1000) }));
 
     const card = [

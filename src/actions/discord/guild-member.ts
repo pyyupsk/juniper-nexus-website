@@ -26,12 +26,12 @@ export async function add(member: MemberMember): Promise<AddResult> {
     if (!response.ok) return { success: false, message: 'ไม่สามารถเพิ่มสิทธิ์ได้' };
 
     try {
-        const id = (await prisma.user.count()) + 2;
+        const id = (await prisma.users.count()) + 2;
 
-        await prisma.user.create({
+        await prisma.users.create({
             data: {
                 id,
-                user_id: member.user.id,
+                discord_id: member.user.id,
                 username: member.user.username,
             },
         });

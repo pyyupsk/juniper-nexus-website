@@ -16,20 +16,13 @@ export async function MembersAchievements({ limit = undefined }: Props) {
             ? await prisma.achievements.findMany({
                   orderBy: { id: 'asc' },
                   take: limit,
-                  select: {
-                      id: true,
-                      title: true,
-                      description: true,
-                      image: true,
-                      member: true,
-                  },
               })
             : Array.from({ length: limit ?? randomInt(5, 20) }, (_, i) => ({
                   id: `test-${i}`,
-                  title: 'title',
+                  name: 'title',
                   description: 'description',
-                  image: 'https://placeholder.com/500x500',
-                  member: `member-${i}`,
+                  image_url: 'https://placeholder.com/500x500',
+                  user_id: `member-${i}`,
               }));
 
     return (
@@ -41,18 +34,18 @@ export async function MembersAchievements({ limit = undefined }: Props) {
                         key={achievement.id}
                         className="rounded-t-lg border-b border-primary shadow-lg transform relative"
                     >
-                        <CopyButton text={achievement.id} className="absolute top-2 right-2" />
+                        <CopyButton text={achievement.id.toString()} className="absolute top-2 right-2" />
                         <Image
-                            src={achievement.image}
+                            src={achievement.image_url}
                             alt={achievement.description}
                             className="w-full h-48 object-cover rounded-t-lg object-top"
                             width={500}
                             height={500}
                         />
                         <div className="py-6">
-                            <h3>{achievement.title}</h3>
+                            <h3>{achievement.name}</h3>
                             <p className="-mb-4">
-                                {achievement.member} (<code>{achievement.id}</code>)
+                                {achievement.user_id} (<code>{achievement.id}</code>)
                             </p>
                             <p className="muted">{achievement.description}</p>
                         </div>

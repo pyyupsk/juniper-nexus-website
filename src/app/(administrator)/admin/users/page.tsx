@@ -8,10 +8,10 @@ const Panel = dynamic(() => import('./components/panel').then((mod) => mod.Panel
 
 export default async function Page() {
     const users = production
-        ? await prisma.user.findMany()
+        ? await prisma.users.findMany()
         : Array.from({ length: 20 }).map(() => ({
               id: Math.floor(Math.random() * 1000),
-              user_id: Math.floor(Math.random() * 1000).toString(),
+              discord_id: Math.floor(Math.random() * 1000).toString(),
               username: Math.floor(Math.random() * 1000).toString(),
               created_at: new Date(),
           }));
