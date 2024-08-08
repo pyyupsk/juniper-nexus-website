@@ -25,7 +25,7 @@ export function Mobile({ user, pathname, scrolled, open, setOpen }: Props) {
                 {links.map((link) => (
                     <RenderLink key={link.href} link={link} pathname={pathname} scrolled={scrolled} />
                 ))}
-                <Link href={user ? '/members-area' : '/sign-in'} className={buttonVariants()}>
+                <Link href={user ? '/me' : '/sign-in'} className={buttonVariants()}>
                     {user ? 'พื้นที่สมาชิก' : 'เข้าสู่ระบบ'}
                 </Link>
             </div>

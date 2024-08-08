@@ -19,7 +19,7 @@ export function Desktop({ user, pathname, scrolled }: Props) {
                 ))}
             </nav>
             <div className="min-w-[200px] justify-end hidden lg:flex">
-                <Link href={user ? '/members-area' : '/sign-in'} className={buttonVariants()}>
+                <Link href={user ? '/me' : '/sign-in'} className={buttonVariants()}>
                     {user ? 'พื้นที่สมาชิก' : 'เข้าสู่ระบบ'}
                 </Link>
             </div>
