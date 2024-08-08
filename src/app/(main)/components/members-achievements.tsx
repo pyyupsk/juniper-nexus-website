@@ -13,7 +13,7 @@ type Props = {
 
 export async function MembersAchievements({ limit = undefined }: Props) {
     const achievements =
-        env.NODE_ENV !== 'production'
+        env.NODE_ENV === 'production'
             ? await prisma.achievements.findMany({
                   orderBy: { id: 'asc' },
                   take: limit,
@@ -32,7 +32,7 @@ export async function MembersAchievements({ limit = undefined }: Props) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-8">
                 {achievements.map(async (achievement) => {
                     const user =
-                        env.NODE_ENV !== 'production'
+                        env.NODE_ENV === 'production'
                             ? await prisma.users.findUnique({ where: { id: achievement.user_id } })
                             : {
                                   id: achievement.user_id,
