@@ -27,7 +27,7 @@ export default function Page() {
                 </div>
                 <div className="container text-center relative">
                     <h1>ยินดีต้อนรับสู่ Juniper Nexus</h1>
-                    <p className="text-xl">
+                    <p className="text-xl mt-4">
                         เข้าร่วมชุมชนที่มีชีวิตชีวาของเราและยกระดับประสบการณ์ Garena RoV ของคุณให้ดียิ่งขึ้น!
                     </p>
                     <DiscordButton size="lg" rounded className="mt-8 hover:scale-105">
@@ -73,7 +73,7 @@ export default function Page() {
                         <div className="flex flex-col justify-between h-full space-y-4">
                             <div>
                                 <h3>ติดอันดับ 50 กิลด์ชั้นนำของประเทศไทย</h3>
-                                <p className="text-lg">
+                                <p className="text-lg mt-4">
                                     เราภูมิใจที่ได้รับการจัดอันดับเป็นหนึ่งใน 50 กิลด์ที่ดีที่สุดของประเทศไทย
                                     ความสำเร็จนี้สะท้อนถึงความมุ่งมั่น การทำงานเป็นทีม
                                     และความหลงใหลในการสร้างชุมชนที่ยอดเยี่ยมในโลกของเกม
@@ -95,7 +95,7 @@ export default function Page() {
                                     </div>
                                     <span className="scroll-m-20 font-semibold tracking-tight text-2xl">100+</span>
                                 </div>
-                                <p className="text-lg">
+                                <p className="text-lg mt-4">
                                     เรามีสมาชิกที่ทุ่มเทมากกว่า 100 คน และจำนวนยังคงเติบโตอย่างต่อเนื่อง!
                                     เข้าร่วมกับเราเพื่อเป็นส่วนหนึ่งของชุมชนที่แข็งแกร่งและเติบโตอย่างรวดเร็ว
                                 </p>

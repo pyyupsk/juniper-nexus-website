@@ -28,7 +28,7 @@ export default function Page() {
                         <h2 className="text-primary border-b-4 border-primary inline-block transform -skew-x-6">
                             ยินดีต้อนรับสู่ Juniper Nexus
                         </h2>
-                        <p className="leading">
+                        <p className="leading mt-4">
                             Juniper Nexus เป็นมากกว่ากิลด์—เราเป็นชุมชนที่ผู้เล่นมารวมตัวกันเพื่อแบ่งปันประสบการณ์
                             เข้าร่วมในกิจกรรม และสร้างมิตรภาพที่ยั่งยืน
                         </p>

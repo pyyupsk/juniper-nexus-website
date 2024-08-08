@@ -77,16 +77,14 @@ export default function Page() {
                                     <Aurora />
                                 </div>
                             </div>
-                            <p className="italic muted quote text-sm">
+                            <p className="italic muted quote text-sm mt-4">
                                 Juniper Nexus ได้รับการจัดอันดับให้เป็นหนึ่งในกิลด์ชั้นนำของประเทศไทยอย่างภาคภูมิใจ
                             </p>
                         </div>
                     </div>
                 </div>
                 <div className="mt-12 text-center">
-                    <p className="italic quote -mb-4">
-                        Juniper Nexus ภูมิใจในความสำเร็จและการเติบโตอย่างต่อเนื่องของเรา
-                    </p>
+                    <p className="italic quote">Juniper Nexus ภูมิใจในความสำเร็จและการเติบโตอย่างต่อเนื่องของเรา</p>
                     <p className="quote">เราเฉลิมฉลองในแต่ละเหตุการณ์สำคัญและมุ่งมั่นสู่ความเป็นเลิศ</p>
                 </div>
             </section>

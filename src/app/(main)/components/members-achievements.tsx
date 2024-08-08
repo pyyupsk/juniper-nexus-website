@@ -1,5 +1,6 @@
 import { randomInt } from 'crypto';
 import { CopyButton } from '@/components/copy-button';
+import { IcOutlineDiscord } from '@/components/icons/IcOutlineDiscord';
 import { buttonVariants } from '@/components/ui/button';
 import { env } from '@/env';
 import { prisma } from '@/lib/prisms';
@@ -12,7 +13,7 @@ type Props = {
 
 export async function MembersAchievements({ limit = undefined }: Props) {
     const achievements =
-        env.NODE_ENV === 'production'
+        env.NODE_ENV !== 'production'
             ? await prisma.achievements.findMany({
                   orderBy: { id: 'asc' },
                   take: limit,
@@ -22,35 +23,48 @@ export async function MembersAchievements({ limit = undefined }: Props) {
                   name: 'title',
                   description: 'description',
                   image_url: 'https://placeholder.com/500x500',
-                  user_id: `member-${i}`,
+                  user_id: i,
               }));
 
     return (
         <section className="py-16 container">
             <h2 className="text-center">ความสำเร็จของสมาชิก</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-8">
-                {achievements.map((achievement) => (
-                    <div
-                        key={achievement.id}
-                        className="rounded-t-lg border-b border-primary shadow-lg transform relative"
-                    >
-                        <CopyButton text={achievement.id.toString()} className="absolute top-2 right-2" />
-                        <Image
-                            src={achievement.image_url}
-                            alt={achievement.description}
-                            className="w-full h-48 object-cover rounded-t-lg object-top"
-                            width={500}
-                            height={500}
-                        />
-                        <div className="py-6">
-                            <h3>{achievement.name}</h3>
-                            <p className="-mb-4">
-                                {achievement.user_id} (<code>{achievement.id}</code>)
-                            </p>
-                            <p className="muted">{achievement.description}</p>
+                {achievements.map(async (achievement) => {
+                    const user =
+                        env.NODE_ENV !== 'production'
+                            ? await prisma.users.findUnique({ where: { id: achievement.user_id } })
+                            : {
+                                  id: achievement.user_id,
+                                  username: 'username',
+                              };
+
+                    return (
+                        <div
+                            key={achievement.id}
+                            className="rounded-t-lg border-b border-primary shadow-lg transform relative"
+                        >
+                            <CopyButton text={achievement.id.toString()} className="absolute top-2 right-2" />
+                            <Image
+                                src={achievement.image_url}
+                                alt={achievement.description}
+                                className="w-full h-48 object-cover rounded-t-lg object-top"
+                                width={500}
+                                height={500}
+                            />
+                            <div className="py-6">
+                                <h3>{achievement.name}</h3>
+                                <div className="flex items-center space-x-2">
+                                    <IcOutlineDiscord className="size-5" />
+                                    <p>
+                                        {user ? user.username : 'Unknown'} (<code>{achievement.id}</code>)
+                                    </p>
+                                </div>
+                                <p className="muted">{achievement.description}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
             {limit && (
                 <div className="text-center">

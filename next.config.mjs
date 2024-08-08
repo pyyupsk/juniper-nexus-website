@@ -15,8 +15,8 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'qpmtvzspevuvztptbwwr.supabase.co',
-                pathname: '/storage/v1/object/public/game%20profiles/**',
+                hostname: 'vnjxcibiwwxmbxoqqzfx.supabase.co',
+                pathname: '/storage/v1/object/public/Profile/**',
             },
             {
                 protocol: 'https',
